@@ -70,7 +70,7 @@ export default function SeatGrid() {
       {rows.map((row, rowIndex) => (
         <div
           key={rowIndex}
-          className={`grid grid-cols-${SEATS_PER_ROW} gap-2 mb-4`} // Always use 7 columns for each row
+          className="grid grid-cols-7 gap-2 mb-4" // Always use 7 columns for each row
         >
           {row.map((seat) => (
             <Button

@@ -26,12 +26,12 @@ export async function POST(request: Request) {
     }
 
     let seatsToBook = [];
-    let reservationGroup = Math.floor(Date.now() / 1000); // Use seconds since epoch for a unique integer
+    const reservationGroup = Math.floor(Date.now() / 1000); // Use seconds since epoch for a unique integer
 
     // Try to find consecutive seats in the same row
     for (let i = 0; i < availableSeats.length; i++) {
-      let row = Math.floor((availableSeats[i].seat_number - 1) / 7);
-      let consecutiveSeats = availableSeats.slice(i, i + seatsRequested);
+      const row = Math.floor((availableSeats[i].seat_number - 1) / 7);
+      const consecutiveSeats = availableSeats.slice(i, i + seatsRequested);
 
       if (consecutiveSeats.length === seatsRequested &&
           consecutiveSeats.every((seat, index) => 

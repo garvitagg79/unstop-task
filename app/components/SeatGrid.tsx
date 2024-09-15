@@ -6,6 +6,12 @@ import { supabase } from "@/lib/supabase"; // Assuming Supabase client is set up
 const SEATS_PER_ROW = 7;
 const TOTAL_SEATS = 80;
 
+interface Seat {
+  id: number;
+  seat_number: number;
+  is_reserved: boolean;
+}
+
 export default function SeatGrid() {
   const [seats, setSeats] = useState<
     Array<{ id: number; seat_number: number; isReserved: boolean }>
@@ -26,7 +32,7 @@ export default function SeatGrid() {
         }
 
         // Transform data to match the format for your component
-        const seatData = data.map((seat: any) => ({
+        const seatData = data.map((seat: Seat) => ({
           id: seat.id,
           seat_number: seat.seat_number,
           isReserved: seat.is_reserved,
